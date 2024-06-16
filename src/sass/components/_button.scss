@@ -1,0 +1,52 @@
+@use '../base//functions' as fun;
+
+.btn{
+    width: 100px;
+    font-size: 1.6rem;
+    text-transform: uppercase;
+    background-color: fun.color('primary');
+    line-height: 1.1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border-radius: 100px;
+    font-weight: 500;
+    position: relative;
+    overflow: hidden;
+    border: 2px solid fun.color('primary');
+    transition: .5s ease;
+    transition-property: background-color, border-color;
+    &::before,
+    &::after{
+        content: "";
+        width: 5px;
+        height: 5px;
+        position: absolute;
+        border-radius: 100px;
+        background-color: fun.color('white');
+        transition: .5s ease all;
+    }
+    &::before{
+        left: 10px;
+    }
+    &::after{
+        right: 10px;
+    }
+    &--small{
+        height: 32.5px;
+        font-size: 1.4rem;
+        color: fun.color('white');
+        min-width: 125px;
+    }
+    &:hover{
+        border-color: fun.color('white');
+        background-color: fun.color('fifthy');
+        &::after{
+            right: -10px;
+        }
+        &::before{
+            left: -10px;
+        }
+    }
+}

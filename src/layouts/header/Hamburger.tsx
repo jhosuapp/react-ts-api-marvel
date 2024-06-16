@@ -1,7 +1,7 @@
 //React hooks
 import { useRef, useState } from "react";
 
-const HeaderHamburger = ():JSX.Element =>{
+const NavbarHamburger = ():JSX.Element =>{
     //Store
     const [ hamburger, setHamburger ] = useState(false);
     //Ref
@@ -22,4 +22,4 @@ const HeaderHamburger = ():JSX.Element =>{
     )
 }
 
-export { HeaderHamburger }
+export { NavbarHamburger }
