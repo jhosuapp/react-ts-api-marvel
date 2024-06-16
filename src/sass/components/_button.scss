@@ -15,8 +15,12 @@
     position: relative;
     overflow: hidden;
     border: 2px solid fun.color('primary');
+    color: fun.color('white');
     transition: .5s ease;
     transition-property: background-color, border-color;
+    height: 40px;
+    min-width: 250px;
+    cursor: pointer;
     &::before,
     &::after{
         content: "";
@@ -48,5 +52,20 @@
         &::before{
             left: -10px;
         }
+    }
+}
+
+@media(max-width: fun.breakpoints('ipad-big')){
+    .btn{
+        font-size: 1.5rem;
+        height: 37.5px;
+    }
+}
+
+@media(max-width: fun.breakpoints('mobile')){
+    .btn{
+        height: 35px;
+        font-size: 1.4rem;
+        min-width: 100%;
     }
 }

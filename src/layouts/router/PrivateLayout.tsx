@@ -5,7 +5,7 @@ import { Outlet } from 'react-router-dom';
 const PrivateLayout = ():JSX.Element =>{
     return( 
         <>
-            <Navbar />
+            <Navbar enableNav />
             <Outlet />
         </>
     );

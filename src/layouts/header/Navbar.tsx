@@ -2,13 +2,17 @@ import { Link, NavLink } from 'react-router-dom';
 import logo from  '/assets/img/svg/logo.svg';
 import { NavbarHamburger } from './Hamburger';
 
-const Navbar = ():JSX.Element => {
+interface Props {
+    enableNav?: boolean
+}
+
+const Navbar = ({ enableNav }: Props):JSX.Element => {
     return (
         <nav className="navbar">
             <Link className="navbar-brand" to="/">
                 <img src={ logo } alt="logo marvel" />
             </Link>
-            <div className="navbar-content">
+            { enableNav && <div className="navbar-content">
                 <div className="navbar-collapse-nav">
                     <NavLink to="/marvel">
                         Marvel
@@ -22,8 +26,8 @@ const Navbar = ():JSX.Element => {
                         Logout
                     </NavLink>
                 </div>
-            </div>
-            <NavbarHamburger />
+            </div> }
+            { enableNav && <NavbarHamburger /> }
         </nav>
     )
 }

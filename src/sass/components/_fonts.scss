@@ -1,0 +1,24 @@
+@use '../base/functions' as fun;
+
+h1{
+    font-size: 3rem;
+    color: fun.color('fifthy');
+    text-transform: uppercase;
+}
+
+.center{
+    text-align: center;
+}
+
+
+@media(max-width: fun.breakpoints('ipad-big')){
+    h1{
+        font-size: 2.5rem;
+    }
+}
+
+@media(max-width: fun.breakpoints('mobile')){
+    h1{
+        font-size: 2rem;
+    }
+}
