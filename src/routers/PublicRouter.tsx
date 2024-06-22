@@ -2,7 +2,7 @@ import { LoginScreen } from '../screens';
 
 const PublicRouter = [
     {
-        path: "/login",
+        path: "/",
         element: <LoginScreen />,
     },
 ];

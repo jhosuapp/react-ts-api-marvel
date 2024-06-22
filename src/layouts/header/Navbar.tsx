@@ -22,7 +22,7 @@ const Navbar = ({ enableNav }: Props):JSX.Element => {
                     </NavLink>
                 </div>
                 <div className="navbar-collapse-logout">
-                    <NavLink className="btn btn--small" to="/login">
+                    <NavLink className="btn btn--small" to="/">
                         Logout
                     </NavLink>
                 </div>
