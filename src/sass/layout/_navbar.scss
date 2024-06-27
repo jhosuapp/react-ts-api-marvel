@@ -11,6 +11,7 @@
     left: 0;
     width: 100%;
     position: fixed;
+    z-index: 9;
     .navbar-brand{
         transition: .5s ease opacity;
         position: relative;
