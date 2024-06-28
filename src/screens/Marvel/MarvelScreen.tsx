@@ -11,9 +11,9 @@ const MarvelScreen = ():JSX.Element =>{
     },[]);
 
     return( 
-        <Container className='ctn ctn--top ctn--fullheight'>
-            <article>
-                <h1>MARVEL SCREEN</h1>
+        <Container className='ctn ctn--column ctn--top ctn--bottom ctn--fullheight'>
+            <h1 className='mt-30'>MARVEL</h1>
+            <article className='list-heroes'>
                 {statusHeroes == 'success' && <ListHeroes publisher='Marvel Comics' />}
             </article>
         </Container>

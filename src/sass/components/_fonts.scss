@@ -6,10 +6,27 @@ h1{
     text-transform: uppercase;
 }
 
+p{
+    font-size: 1.6rem;
+    color: fun.color('fifthy');
+}
+
+h5{
+    font-size: 1.8rem;
+    color: fun.color('primary');
+}
+
 .center{
     text-align: center;
 }
 
+.mt-30{
+    margin-top: 3rem;
+}
+
+b{
+    font-weight: 900;
+}
 
 @media(max-width: fun.breakpoints('ipad-big')){
     h1{

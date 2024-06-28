@@ -1,0 +1,41 @@
+@use '../base/functions' as fun;
+@use '../base/variables' as var;
+
+.list-heroes{
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(min(100%, 250px), 3fr));
+    padding-top: 30px;
+    gap: 30px;
+    width: 100%;
+}
+
+.card-hero{
+    width: 100%;
+    background-color: fun.color('white');
+    border-radius: 10px 10px 0 0;
+    &:hover{    
+        picture img{
+            transform: scale(1.1);
+        }
+    }
+    picture{
+        width: 100%;
+        max-height: 200px;
+        display: flex;
+        position: relative;
+        overflow: hidden;
+        border-radius: 10px 10px 0 0;
+        img{
+            width: 100%;
+            object-position: top;
+            object-fit: cover;
+            transition: 1s ease transform;
+        }
+    }
+    .content {
+        padding: 3rem;
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+    }
+}

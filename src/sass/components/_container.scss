@@ -19,8 +19,11 @@ body{
     &--top{
         padding-top: var.$height-header;
     }
+    &--bottom{
+        padding-bottom: 80px;
+    }
     &--fullheight{
-        height: 100svh;
+        min-height: 100svh;
         display: flex;
         align-items: center;
         justify-content: center;
@@ -42,6 +45,9 @@ body{
         display: flex;
         justify-content: center;
         align-items: center;
+    }
+    &--column{
+        flex-direction: column;
     }
 }
 
