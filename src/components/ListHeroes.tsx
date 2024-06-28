@@ -1,4 +1,5 @@
 import { useHeroes } from '../store/';
+import { CardHeroes } from '../components/';
 
 type Props = {
     publisher: 'Marvel Comics' | 'DC Comics'
@@ -15,11 +16,11 @@ const ListHeroes = ( { publisher }: Props )=>{
     const filterByPublisher = dataHeroes.filter(item => item.publisher === publisher);
 
     return(
-        <ul>
-            {filterByPublisher.length && filterByPublisher.map(({ superhero }, index)=>(
-                <li key={ index }>{ superhero }</li>
+        <>
+            {filterByPublisher.length && filterByPublisher.map((dataHero, index)=>(
+                <CardHeroes key={ index } data={ { ...dataHero } }  />
             ))}
-        </ul>
+        </>
     );
 }
 
