@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
 import { useHeroes } from '../../store/';
-import { ListHeroes, Container } from '../../components';
+import { ListHeroes, Container, Text } from '../../components';
 
 const MarvelScreen = ():JSX.Element =>{
     const getDataHeroes = useHeroes(state => state.getDataHeroes);
@@ -12,7 +12,7 @@ const MarvelScreen = ():JSX.Element =>{
 
     return( 
         <Container className='ctn ctn--column ctn--top ctn--bottom ctn--fullheight'>
-            <h1 className='mt-30'>MARVEL</h1>
+            <Text headingType={'h1'} className='mt-30'>MARVEL</Text>
             <article className='list-heroes'>
                 {statusHeroes == 'success' && <ListHeroes publisher='Marvel Comics' />}
             </article>

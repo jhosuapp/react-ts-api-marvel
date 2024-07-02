@@ -17,7 +17,7 @@ const CardHeroes = ( { data }:Props )=>{
                 <div className="content">
                     <Text headingType={'h5'}>{ data.superhero }</Text>
                     <Text><b>Alter ego:</b> { data.alter_ego }</Text>
-                    <Text><b>Personajes:</b> { data.characters }</Text>
+                    <Text><b>Characters:</b> { data.characters }</Text>
                 </div>
             </Link>
         </>
