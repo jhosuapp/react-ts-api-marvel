@@ -11,9 +11,9 @@ const DcScreen = ():JSX.Element =>{
     },[]);
 
     return( 
-        <Container className='ctn ctn--top ctn--fullheight'>
-            <article>
-                <h1>DC SCREEN</h1>
+        <Container className='ctn ctn--column ctn--top ctn--bottom ctn--fullheight'>
+            <h1 className='mt-30'>DC</h1>
+            <article className='list-heroes'>
                 {statusHeroes == 'success' && <ListHeroes publisher='DC Comics' />}
             </article>
         </Container>

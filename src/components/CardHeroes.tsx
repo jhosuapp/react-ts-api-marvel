@@ -7,10 +7,10 @@ type Props = {
 }
 
 const CardHeroes = ( { data }:Props )=>{
-    console.log();
+
     return(
         <>
-            <Link to={ data.id } className='card-hero'>
+            <Link to={ `/detail-hero/${data.id}` } className='card-hero'>
                 <picture>
                     <img src={`/assets/img/heroes/${data.id}.jpg`} alt={ data.superhero } />
                 </picture>
