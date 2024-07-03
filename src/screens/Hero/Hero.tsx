@@ -3,6 +3,8 @@ import { useHeroes } from '../../store/';
 import { Container, Text } from '../../components';
 import { FieldsHeroesData } from '../../models';
 import { useParams, useNavigate  } from 'react-router-dom';
+import iconRight from '/assets/img/svg/circle-right-regular.svg';
+import iconLeft from '/assets/img/svg/circle-left-regular.svg';
 
 const HeroScreen = ():JSX.Element =>{
     const getDataHeroes = useHeroes(state => state.getDataHeroes);
@@ -40,6 +42,14 @@ const HeroScreen = ():JSX.Element =>{
                             <Text><b>First appearance:</b> { heroe.first_appearance }</Text>
                             <Text><b>publisher:</b> { heroe.publisher }</Text>
                         </div>
+                    </article>
+                    <article className='hero-nav'>
+                        <button>
+                            <img src={ iconLeft } alt="Icon left" />
+                        </button>
+                        <button>
+                            <img src={ iconRight } alt="Icon right" />
+                        </button>
                     </article>
                 </>
             }
