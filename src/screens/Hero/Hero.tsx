@@ -1,7 +1,6 @@
 import { useEffect, useState } from 'react';
 import { useHeroes } from '../../store/';
 import { Container, Text } from '../../components';
-import { FieldsHeroesData } from '../../models';
 import { useParams, useNavigate  } from 'react-router-dom';
 import iconRight from '/assets/img/svg/circle-right-regular.svg';
 import iconLeft from '/assets/img/svg/circle-left-regular.svg';
@@ -9,7 +8,7 @@ import iconLeft from '/assets/img/svg/circle-left-regular.svg';
 const HeroScreen = ():JSX.Element =>{
     const getDataHeroes = useHeroes(state => state.getDataHeroes);
     const dataHeroes = useHeroes(state => state.dataHeroes);
-    const [ heroe, setHeroe ] = useState<FieldsHeroesData>({} as FieldsHeroesData);
+    const [ heroeId, setHeroId] = useState<number>();
     const { id } = useParams();
     const navigate = useNavigate();
     //Get data
@@ -19,35 +18,47 @@ const HeroScreen = ():JSX.Element =>{
     //Validate if heroe exists
     useEffect(()=>{
         if(dataHeroes[0]){
-            const filterHeroesById = dataHeroes.find(heroe => heroe.id == id);
-            setHeroe(filterHeroesById || {} as FieldsHeroesData); 
-            if(!filterHeroesById) return navigate('/dc');
+            const findIndexHero = dataHeroes.findIndex(heroe => heroe.id == id);
+            setHeroId(findIndexHero);
+            // if(!findIndexHero !== '-1') return navigate('/dc');
         }
 
-    }, [dataHeroes]);
+    }, [dataHeroes, heroeId]);
+
+    const handleClickNav = (isNext?: boolean)=>{
+        if(heroeId !== undefined){
+            if(isNext){
+                setHeroId(heroeId + 1);
+                dataHeroes[heroeId - 1] && navigate(`/detail-hero/${dataHeroes[heroeId - 1].id}`);
+            }else{
+                setHeroId(heroeId - 1);
+                dataHeroes[heroeId + 1] && navigate(`/detail-hero/${dataHeroes[heroeId + 1].id}`);
+            }
+        }
+    }
 
     return( 
         <Container className='ctn ctn--column ctn--top ctn--bottom ctn--fullheight'>
-            {heroe && 
+            {dataHeroes[heroeId || 0] && 
                 <>
                     <article className='heroe-detail'>
                         <picture>
-                            <img src={`/assets/img/heroes/${heroe.id}.jpg`} alt={ heroe.superhero } />
+                            <img src={`/assets/img/heroes/${dataHeroes[heroeId || 0].id}.jpg`} alt={ dataHeroes[heroeId || 0].superhero } />
                         </picture>
                         <div className='content'>
-                            <Text headingType={'h1'}>{ heroe.superhero }</Text>
-                            <Text><b>Alter ego:</b> { heroe.alter_ego }</Text>
-                            <Text><b>Characters:</b> { heroe.characters }</Text>
-                            <Text><b>Personajes:</b> { heroe.characters }</Text>
-                            <Text><b>First appearance:</b> { heroe.first_appearance }</Text>
-                            <Text><b>publisher:</b> { heroe.publisher }</Text>
+                            <Text headingType={'h1'}>{ dataHeroes[heroeId || 0].superhero }</Text>
+                            <Text><b>Alter ego:</b> { dataHeroes[heroeId || 0].alter_ego }</Text>
+                            <Text><b>Characters:</b> { dataHeroes[heroeId || 0].characters }</Text>
+                            <Text><b>Personajes:</b> { dataHeroes[heroeId || 0].characters }</Text>
+                            <Text><b>First appearance:</b> { dataHeroes[heroeId || 0].first_appearance }</Text>
+                            <Text><b>publisher:</b> { dataHeroes[heroeId || 0].publisher }</Text>
                         </div>
                     </article>
                     <article className='hero-nav'>
-                        <button>
+                        <button onClick={ () => handleClickNav() }>
                             <img src={ iconLeft } alt="Icon left" />
                         </button>
-                        <button>
+                        <button onClick={ () => handleClickNav(true) }>
                             <img src={ iconRight } alt="Icon right" />
                         </button>
                     </article>
