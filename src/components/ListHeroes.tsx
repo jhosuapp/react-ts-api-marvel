@@ -1,5 +1,6 @@
 import { useHeroes } from '../store/';
 import { CardHeroes } from '../components/';
+import { useMemo } from 'react';
 
 type Props = {
     publisher: 'Marvel Comics' | 'DC Comics'
@@ -13,7 +14,7 @@ const ListHeroes = ( { publisher }: Props )=>{
         throw new Error(`Publisher ${ publisher } no es correcto`);
     }
     //Filter by publisher
-    const filterByPublisher = dataHeroes.filter(item => item.publisher === publisher);
+    const filterByPublisher = useMemo(()=> dataHeroes.filter(item => item.publisher === publisher), [publisher]);
 
     return(
         <>

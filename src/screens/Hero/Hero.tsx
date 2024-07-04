@@ -20,14 +20,15 @@ const HeroScreen = ():JSX.Element =>{
         if(dataHeroes[0]){
             const findIndexHero = dataHeroes.findIndex(heroe => heroe.id == id);
             setHeroId(findIndexHero);
-            // if(!findIndexHero !== '-1') return navigate('/dc');
+            console.log(findIndexHero);
+            if(findIndexHero < 0) return navigate('/dc');
         }
 
     }, [dataHeroes, heroeId]);
 
-    const handleClickNav = (isNext?: boolean)=>{
+    const handleClickNav = (isPrev?: boolean)=>{
         if(heroeId !== undefined){
-            if(isNext){
+            if(isPrev){
                 setHeroId(heroeId + 1);
                 dataHeroes[heroeId - 1] && navigate(`/detail-hero/${dataHeroes[heroeId - 1].id}`);
             }else{
@@ -55,10 +56,10 @@ const HeroScreen = ():JSX.Element =>{
                         </div>
                     </article>
                     <article className='hero-nav'>
-                        <button onClick={ () => handleClickNav() }>
+                        <button onClick={ () => handleClickNav(true) }>
                             <img src={ iconLeft } alt="Icon left" />
                         </button>
-                        <button onClick={ () => handleClickNav(true) }>
+                        <button onClick={ () => handleClickNav() }>
                             <img src={ iconRight } alt="Icon right" />
                         </button>
                     </article>
