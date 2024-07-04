@@ -1,4 +1,4 @@
-import { MarvelScreen, DcScreen, HeroScreen } from '../screens';
+import { MarvelScreen, DcScreen, HeroScreen, Search } from '../screens';
 
 const PrivateRouter = [
     {
@@ -12,6 +12,10 @@ const PrivateRouter = [
     {
         path: "/detail-hero/:id",
         element: <HeroScreen />,
+    },
+    {
+        path: "/search",
+        element: <Search />,
     },
 ];
 

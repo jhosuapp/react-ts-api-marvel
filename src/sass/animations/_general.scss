@@ -1,0 +1,10 @@
+.fade-in{
+    opacity: 0;
+    transition: 1s ease opacity;
+    &.animate-delay{
+        transition-delay: 10s;
+    }
+    &.animate{
+        opacity: 1;
+    }
+}

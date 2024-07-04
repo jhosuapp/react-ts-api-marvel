@@ -7,6 +7,7 @@ import iconLeft from '/assets/img/svg/circle-left-regular.svg';
 
 const HeroScreen = ():JSX.Element =>{
     const getDataHeroes = useHeroes(state => state.getDataHeroes);
+    const statusHeroes = useHeroes(state => state.statusHeroes);
     const dataHeroes = useHeroes(state => state.dataHeroes);
     const [ heroeId, setHeroId] = useState<number>();
     const { id } = useParams();
@@ -20,7 +21,6 @@ const HeroScreen = ():JSX.Element =>{
         if(dataHeroes[0]){
             const findIndexHero = dataHeroes.findIndex(heroe => heroe.id == id);
             setHeroId(findIndexHero);
-            console.log(findIndexHero);
             if(findIndexHero < 0) return navigate('/dc');
         }
 
@@ -39,7 +39,7 @@ const HeroScreen = ():JSX.Element =>{
     }
 
     return( 
-        <Container className='ctn ctn--column ctn--top ctn--bottom ctn--fullheight'>
+        <Container className={`ctn ctn--column ctn--top ctn--bottom ctn--fullheight fade-in ${statusHeroes == 'success' && 'animate'}`}>
             {dataHeroes[heroeId || 0] && 
                 <>
                     <article className='heroe-detail'>

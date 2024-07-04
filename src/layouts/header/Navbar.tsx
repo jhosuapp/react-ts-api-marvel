@@ -26,6 +26,9 @@ const Navbar = ({ enableNav }: Props):JSX.Element => {
                     <NavLink to="/dc" onClick={ ()=> setHamburger(false) }>
                         Detective Comics
                     </NavLink>
+                    <NavLink to="/search" onClick={ ()=> setHamburger(false) }>
+                        Search
+                    </NavLink>
                 </div>
                 <div className="navbar-collapse-logout">
                     <NavLink className="btn btn--small" to="/" onClick={ ()=> setHamburger(false) }>

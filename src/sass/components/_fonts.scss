@@ -6,6 +6,14 @@ h1{
     text-transform: uppercase;
 }
 
+h3{
+    font-size: 2rem;
+    color: fun.color('fifthy');
+    b{
+        font-weight: 900;
+    }
+}
+
 p{
     font-size: 1.6rem;
     color: fun.color('fifthy');

@@ -1,0 +1,56 @@
+@use '../base/functions' as fun;
+
+.search{
+    gap: 50px;
+    display: flex;
+    top: 60px;
+    position: relative;
+    align-items: flex-start;
+}
+
+.search-filter{
+    width: 30%;
+    background-color: fun.color('white');
+    padding: 30px;
+    position: sticky;
+    top: 100px;
+    input[type="text"]{
+        margin: 20px 0;
+    }
+    .switch--margin{
+        margin-bottom: 10px;
+    }
+    fieldset{
+        position: relative;
+        z-index: 1;
+    }
+}
+.search-results{
+    width: 70%;
+    h3{
+        margin-bottom: 20px;
+    }
+    &__ctn{
+        display: flex;
+        flex-wrap: wrap;
+        gap: 30px;
+        a{
+            flex: 1 25%;
+            min-width: 250px;
+        }
+    }
+}
+
+@media(max-width: fun.breakpoints('ipad-big')){
+    .search{
+        flex-direction: column;
+    }
+    .search-filter{
+        position: inherit;
+        top: 0;
+    }
+    .search-filter,
+    .search-results{
+        width: 100%;
+    }
+}
