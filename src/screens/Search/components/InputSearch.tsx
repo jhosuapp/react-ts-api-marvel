@@ -1,9 +1,9 @@
 import type { ChangeEventHandler } from 'react';
 import { useEffect } from 'react';
 import { useNavigate, useSearchParams  } from 'react-router-dom';
-import { useSearch } from '../../../store';
-
-
+import { useSearch, useHeroes } from '../../../store';
+import { NormalizeTextToExp } from '../../../components';
+import { FilterHeroes } from './InputSearchFilter';
 
 const InputSearch = ():JSX.Element =>{
     //Navigate
@@ -13,16 +13,24 @@ const InputSearch = ():JSX.Element =>{
     //Store
     const valueSearch = useSearch(state => state.valueSearch);
     const setValueSearch = useSearch(state => state.setValueSearch);
+    const dataHeroes = useHeroes(state => state.dataHeroes);
+    const setSearchDataHeroes = useSearch(state => state.setSearchDataHeroes);
     //Handles
     const handleChangeSearch:ChangeEventHandler<HTMLInputElement> = (e)=>{
-        setValueSearch(e.target.value);
-        navigate(`/search/?q=${e.target.value}`);
+        const value = e.target.value;
+        setValueSearch(value);
+        navigate(`/search/?q=${value}`);
+        //Filer heroes
+        const clearText = NormalizeTextToExp(value);
+        const filter = FilterHeroes(dataHeroes, clearText);
+        //Set heroes filtered        
+        setSearchDataHeroes(filter);
     }
     //Set values if exists query param
     useEffect(()=>{
         setValueSearch(paramValue || '');
     }, []);
-
+    
     return (
         <input 
             type="text" 

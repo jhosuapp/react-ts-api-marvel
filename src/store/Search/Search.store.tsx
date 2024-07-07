@@ -5,6 +5,7 @@ interface SearchProps {
     valueSearch: string;
     searchDataHeroes: HeroesData,
     setValueSearch: (value: string) => void;
+    setSearchDataHeroes: (heroes: HeroesData) => void
 }
 
 const useSearch = create<SearchProps>()((set) => ({
@@ -12,7 +13,8 @@ const useSearch = create<SearchProps>()((set) => ({
     valueSearch: '',
     searchDataHeroes: {} as HeroesData,
     //Functions
-    setValueSearch: (value: string)=> set({valueSearch: value})
+    setValueSearch: (value: string)=> set({valueSearch: value}),
+    setSearchDataHeroes: (heroes: HeroesData)=> set({searchDataHeroes: heroes}),
 }));
 
 export { useSearch }
