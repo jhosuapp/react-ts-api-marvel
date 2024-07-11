@@ -56,6 +56,14 @@
         align-items: center;
         margin-left: 20px;
     }
+    .navbar-collapse-logout{
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        p{
+            color: fun.color('white');
+        }
+    }
     .navbar-collapse-nav{
         display: flex;
         gap: 20px;
@@ -93,6 +101,7 @@
         .navbar-collapse-logout{
             margin-top: 60px;
             text-align: center;
+            flex-direction: column;
         }
         &.active{
             .navbar-content{

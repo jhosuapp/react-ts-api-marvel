@@ -1,8 +1,9 @@
 import { Link, NavLink } from 'react-router-dom';
 import logo from  '/assets/img/svg/logo.svg';
 import { NavbarHamburger } from './Hamburger';
+import { Text } from '../../components/index';
 //Store
-import { useNavbar } from "../../store";
+import { useNavbar, useAuth } from "../../store";
 
 interface Props {
     enableNav?: boolean
@@ -12,6 +13,7 @@ const Navbar = ({ enableNav }: Props):JSX.Element => {
     //Store
     const setHamburger = useNavbar(state => state.setHamburger);
     const hamburger = useNavbar(state => state.hamburger);
+    const user = useAuth(state => state.user);
 
     return (
         <nav className={`navbar ${hamburger ? 'active' : ''}`}>
@@ -31,6 +33,7 @@ const Navbar = ({ enableNav }: Props):JSX.Element => {
                     </NavLink>
                 </div>
                 <div className="navbar-collapse-logout">
+                    {user && <Text>{ user.user_name }</Text>}
                     <NavLink className="btn btn--small" to="/" onClick={ ()=> setHamburger(false) }>
                         Logout
                     </NavLink>
