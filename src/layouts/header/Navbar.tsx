@@ -1,19 +1,30 @@
+//React hooks
+import { useNavigate } from 'react-router-dom';
 import { Link, NavLink } from 'react-router-dom';
+//Store && hooks
+import { useNavbar, useAuth } from "../../store";
+import { useAuthHook } from '../../hooks'
+//Img && components
 import logo from  '/assets/img/svg/logo.svg';
 import { NavbarHamburger } from './Hamburger';
 import { Text } from '../../components/index';
-//Store
-import { useNavbar, useAuth } from "../../store";
 
 interface Props {
     enableNav?: boolean
 }
 
 const Navbar = ({ enableNav }: Props):JSX.Element => {
-    //Store
+    //Store && hooks
     const setHamburger = useNavbar(state => state.setHamburger);
     const hamburger = useNavbar(state => state.hamburger);
     const user = useAuth(state => state.user);
+    const { logoutUser } = useAuthHook();
+    const navigate = useNavigate();
+    //Handle logout
+    const handleLogout = ()=>{
+        logoutUser();
+        navigate('/', { replace: true });
+    }
 
     return (
         <nav className={`navbar ${hamburger ? 'active' : ''}`}>
@@ -34,9 +45,9 @@ const Navbar = ({ enableNav }: Props):JSX.Element => {
                 </div>
                 <div className="navbar-collapse-logout">
                     {user && <Text>{ user.user_name }</Text>}
-                    <NavLink className="btn btn--small" to="/" onClick={ ()=> setHamburger(false) }>
+                    <button className="btn btn--small" onClick={ ()=> { setHamburger(false), handleLogout() } }>
                         Logout
-                    </NavLink>
+                    </button>
                 </div>
             </div> }
             { enableNav && <NavbarHamburger /> }

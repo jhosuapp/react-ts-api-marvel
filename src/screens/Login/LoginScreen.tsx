@@ -1,21 +1,15 @@
 //React hooks
 import { useNavigate } from 'react-router-dom';
-//Components && tyoes
+//Components && hooks
 import { Container, Text } from '../../components/index';
-import { useAuth } from '../../store/index';
+import { useAuthHook } from '../../hooks/index';
 
 const LoginScreen = ():JSX.Element =>{
     const navigate = useNavigate();
-    const setUser = useAuth(state => state.setUser);
+    const { loginUser } = useAuthHook();
     //Handle navigate click
     const handleClickLogin = ():void=>{
-        const dataUser = {
-            user_name: 'jhosua',
-            logged: true,
-        }
-        //Logged user
-        localStorage.setItem('user', JSON.stringify( dataUser ));
-        setUser(dataUser);
+        loginUser();
         //Redirect
         navigate('/marvel', { replace: true });
     }
