@@ -10,8 +10,9 @@ const LoginScreen = ():JSX.Element =>{
     //Handle navigate click
     const handleClickLogin = ():void=>{
         loginUser();
+        const lastPath = localStorage.getItem('lastPath') || '/marvel';
         //Redirect
-        navigate('/marvel', { replace: true });
+        navigate(lastPath, { replace: true });
     }
 
     return( 
